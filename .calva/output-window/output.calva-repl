@@ -1,0 +1,350 @@
+; Jacking in...
+; Starting Jack-in Terminal: lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :dependencies conj '[cider/piggieback,"0.5.3"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.piggieback/wrap-cljs-repl"]' -- with-profile +dev repl :headless
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Creating cljs repl session...
+; Connecting cljs repl: Leiningen + Figwheel Main...
+;   The Calva Connection Log might have more connection progress information.
+; Starting cljs repl for: Leiningen + Figwheel Main...
+; CLJS REPL ready to connect. Please, start your ClojureScript app.
+;   Open the app on this URL: http://localhost:9500
+;   The CLJS REPL will connect when your app is running.
+; Cljs builds started
+; Connected session: cljs, repl: dev
+; TIPS: You can choose which REPL to use (clj or cljs):
+;    *Calva: Toggle REPL connection*
+;    (There is a button in the status bar for this)
+; Jack-in done.
+cljs꞉cljs.user꞉> 
+; #object[RangeError RangeError: Maximum call stack size exceeded]
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 2.919 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+user is signed out.
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+; #object[RangeError RangeError: Maximum call stack size exceeded]
+cljs꞉clj-fire.firebase꞉> 
+#object[FirebaseAppImpl [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+#object[Auth [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+user is signed out.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.45 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.433 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+#object[Auth [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+; #object[Error Error: An AuthUI instance already exists for the key "[DEFAULT]"]
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.425 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+#object[Cn [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+; #object[Error Error: An AuthUI instance already exists for the key "[DEFAULT]"]
+cljs꞉clj-fire.firebase꞉> 
+#object[Cn [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+#object[Function]
+cljs꞉clj-fire.firebase꞉> 
+; WARNING: Use of undeclared Var clj-fire.firebase/pointer at line 1 <cljs repl>
+; 
+; #object[TypeError TypeError: Cannot read properties of null (reading '$')]
+cljs꞉clj-fire.firebase꞉> 
+; WARNING: Use of undeclared Var clj-fire.firebase/id at line 1 <cljs repl>
+; 
+; #object[TypeError TypeError: Cannot read properties of null (reading '$')]
+cljs꞉clj-fire.firebase꞉> 
+; #object[TypeError TypeError: Cannot read properties of null (reading '$')]
+cljs꞉clj-fire.firebase꞉> 
+"password"
+cljs꞉clj-fire.firebase꞉> 
+"google.com"
+cljs꞉clj-fire.firebase꞉> 
+#js{:signInOptions [{:provider "password", :requireDisplayName false} "google.com"]}
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.841 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :dependencies conj '[cider/piggieback,"0.5.3"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.piggieback/wrap-cljs-repl"]' -- with-profile +dev repl :headless
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Creating cljs repl session...
+; Connecting cljs repl: Leiningen + Figwheel Main...
+;   The Calva Connection Log might have more connection progress information.
+; Starting cljs repl for: Leiningen + Figwheel Main...
+; CLJS REPL ready to connect. Please, start your ClojureScript app.
+;   Open the app on this URL: http://localhost:9500
+;   The CLJS REPL will connect when your app is running.
+; Cljs builds started
+; Connected session: cljs, repl: dev
+; TIPS: You can choose which REPL to use (clj or cljs):
+;    *Calva: Toggle REPL connection*
+;    (There is a button in the status bar for this)
+; Jack-in done.
+cljs꞉cljs.user꞉> 
+#object[Auth [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+nil
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 2.941 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+#object[Cn [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+; #object[Error Error: An AuthUI instance already exists for the key "[DEFAULT]"]
+cljs꞉clj-fire.firebase꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :dependencies conj '[cider/piggieback,"0.5.3"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.piggieback/wrap-cljs-repl"]' -- with-profile +dev repl :headless
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Creating cljs repl session...
+; Connecting cljs repl: Leiningen + Figwheel Main...
+;   The Calva Connection Log might have more connection progress information.
+; Starting cljs repl for: Leiningen + Figwheel Main...
+; CLJS REPL ready to connect. Please, start your ClojureScript app.
+;   Open the app on this URL: http://localhost:9500
+;   The CLJS REPL will connect when your app is running.
+; Cljs builds started
+; Connected session: cljs, repl: dev
+; TIPS: You can choose which REPL to use (clj or cljs):
+;    *Calva: Toggle REPL connection*
+;    (There is a button in the status bar for this)
+; Jack-in done.
+cljs꞉cljs.user꞉> 
+#object[Cn [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+#js{:signInOptions [{:provider "password", :requireDisplayName false} "google.com"]}
+cljs꞉clj-fire.firebase꞉> 
+; #object[TypeError TypeError: Cannot read properties of null (reading '$')]
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 3.204 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.426 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.432 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.497 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.458 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel:WARNING] Compile Warning   src/clj_fire/firebase.cljs   line:31  column:6
+
+  No such namespace: ui, could not locate ui.cljs, ui.cljc, or JavaScript source providing "ui"
+
+  26                                    (print (.uid user))
+  27                                    (print "user is signed out."))))
+  28  
+  29  (defn init-login-panel! [{:keys [id]}]
+  30    (let [pointer (str "#" id)]
+  31      (ui/start pointer #js {:signInOptions
+           ^---
+  32                             [{:provider firebase.auth.EmailAuthProvider.PROVIDER_ID
+  33                               :requireDisplayName false}
+  34                              firebase.auth.GoogleAuthProvider.PROVIDER_ID]})))
+
+[Figwheel:WARNING] Compile Warning   src/clj_fire/firebase.cljs   line:31  column:6
+
+  Use of undeclared Var ui/start
+
+  26                                    (print (.uid user))
+  27                                    (print "user is signed out."))))
+  28  
+  29  (defn init-login-panel! [{:keys [id]}]
+  30    (let [pointer (str "#" id)]
+  31      (ui/start pointer #js {:signInOptions
+           ^---
+  32                             [{:provider firebase.auth.EmailAuthProvider.PROVIDER_ID
+  33                               :requireDisplayName false}
+  34                              firebase.auth.GoogleAuthProvider.PROVIDER_ID]})))
+
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.47 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+#object[Cn [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.442 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+#object[Cn [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.423 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.412 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+nil
+cljs꞉clj-fire.firebase꞉> 
+nil
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.424 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :dependencies conj '[cider/piggieback,"0.5.3"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.piggieback/wrap-cljs-repl"]' -- with-profile +dev repl :headless
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Creating cljs repl session...
+; Connecting cljs repl: Leiningen + Figwheel Main...
+;   The Calva Connection Log might have more connection progress information.
+; Starting cljs repl for: Leiningen + Figwheel Main...
+; CLJS REPL ready to connect. Please, start your ClojureScript app.
+;   Open the app on this URL: http://localhost:9500
+;   The CLJS REPL will connect when your app is running.
+; Cljs builds started
+; Connected session: cljs, repl: dev
+; TIPS: You can choose which REPL to use (clj or cljs):
+;    *Calva: Toggle REPL connection*
+;    (There is a button in the status bar for this)
+; Jack-in done.
+cljs꞉cljs.user꞉> 
+nil
+cljs꞉clj-fire.firebase꞉> 
+nil
+cljs꞉clj-fire.firebase꞉> 
+; #object[TypeError TypeError: cljs.core.PersistentArrayMap.EMPTY.start is not a function]
+; 
+; 	 (<NO_SOURCE_FILE>)
+cljs꞉clj-fire.firebase꞉> 
+#object[Cn [object Object]]
+cljs꞉clj-fire.firebase꞉> 
+; #object[Error Error: Could not find the FirebaseUI widget element on the page.]
+cljs꞉clj-fire.firebase꞉> 
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 2.759 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.49 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.399 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.444 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.471 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.782 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.397 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.415 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.484 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.428 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+UI shown.
+called
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.488 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+UI shown.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.386 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+UI shown.
+auth result:  #js {:user #object[User [object Object]], :credential #object[OAuthCredential [object Object]], :operationType signIn, :additionalUserInfo #object[GoogleAdditionalUserInfo [object Object]]}
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.441 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+UI shown.
+[Figwheel] Compiling build dev to "resources/public/cljs-out/dev/main.js"
+[Figwheel] Successfully compiled build dev to "resources/public/cljs-out/dev/main.js" in 0.43 seconds.
+[Figwheel] Outputting main file: resources/public/cljs-out/dev/main-auto-testing.js
+hfyg6OMuJoNoYDcjeX7J6QHH9ks1
+This text is printed from src/clj_fire/core.cljs. Go ahead and edit it and see reloading in action.
+UI shown.
+hfyg6OMuJoNoYDcjeX7J6QHH9ks1
+auth result:  #js {:user #object[User [object Object]], :credential #object[OAuthCredential [object Object]], :operationType signIn, :additionalUserInfo #object[GoogleAdditionalUserInfo [object Object]]}
+hfyg6OMuJoNoYDcjeX7J6QHH9ks1
