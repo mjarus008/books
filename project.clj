@@ -10,12 +10,16 @@
   :sass {:target-path "resources/public/css"
          :source-paths ["resources/css"]}
 
-  :dependencies [[org.clojure/clojure "1.10.0"]
-                 [org.clojure/clojurescript "1.11.4"]
+  :dependencies [[bidi "2.1.6"]
+                 [day8.re-frame/http-fx "0.2.4"]
+                 [lifecheq/pushy "0.3.9"]
+                 [org.clojure/clojure "1.10.0"]
                  
-                 [reagent "1.1.1"  :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]]
+                 [org.clojure/clojurescript "1.11.4"]
+                 [reagent "1.1.1"  :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]
+                 [re-frame "1.2.0"]]
 
-  :source-paths ["src"]
+  :source-paths ["clj-src" "cljs-src"]
 
   :aliases {"fig:build" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]
             "fig:min"   ["run" "-m" "figwheel.main" "-O" "advanced" "-bo" "dev"]
@@ -23,7 +27,8 @@
 
   :profiles {:dev {:dependencies [[com.bhauman/figwheel-main "0.2.17"]
                                   [org.slf4j/slf4j-nop "1.7.30"]
-                                  [com.bhauman/rebel-readline-cljs "0.1.4"]]
+                                  [com.bhauman/rebel-readline-cljs "0.1.4"]
+                                  [metosin/reitit "0.5.18"]]
                    
                    :resource-paths ["target"]
                    ;; need to add the compiled assets to the :clean-targets
