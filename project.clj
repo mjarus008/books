@@ -5,6 +5,10 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :min-lein-version "2.7.1"
+  
+  :plugins [[deraen/lein-sass4clj "0.5.5"]]
+  :sass {:target-path "resources/public/css"
+         :source-paths ["resources/css"]}
 
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.11.4"]

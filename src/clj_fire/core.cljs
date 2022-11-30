@@ -1,16 +1,13 @@
 (ns clj-fire.core
-  (:require
-   [goog.dom :as gdom]
-   [reagent.dom :as rdom]
-   [clj-fire.auth.views :as auth.views]))
+  (:require [clj-fire.home.views :as home.views]
+            [goog.dom :as gdom]
+            [reagent.dom :as rdom]))
 
 (defn get-app-element []
   (gdom/getElement "app"))
 
 (defn hello-world []
-  [:div
-   [:h1 "Molweni App"]
-   [auth.views/login-panel]])
+  [home.views/main-panel])
 
 (defn mount [el]
   (rdom/render [hello-world] el))
