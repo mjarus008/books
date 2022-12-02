@@ -2,7 +2,8 @@
   (:require ["firebase/app" :as fire]
             ["firebase/compat/app$default" :as firebase]
             ["firebase/auth" :as auth]
-            firebaseui))
+            firebaseui
+            [re-frame.core :as re-frame]))
 
 (def fire-config #js {:apiKey "AIzaSyD2enijFZ1ovNxt8PAO_0GxKcUoClujrR4",
                       :authDomain "moloweni.firebaseapp.com",
@@ -21,10 +22,8 @@
 
 (defonce ui (firebaseui.auth.AuthUI. (firebase.auth)))
 
-(auth/onAuthStateChanged auth (fn [user]
-                                  (if (some? user)
-                                    (print (.-uid user))
-                                    (print "user is signed out."))))
+(defn on-auth-state-changed [evt]
+  (auth/onAuthStateChanged auth #(re-frame/dispatch evt)))
 
 (defn init-login-panel! [{:keys [id] :as opts}]
   (let [pointer (str "#" id)]
