@@ -6,7 +6,8 @@
 
   :min-lein-version "2.7.1"
   
-  :plugins [[deraen/lein-sass4clj "0.5.5"]]
+  :plugins [[deraen/lein-sass4clj "0.5.5"]
+            [lein-cljfmt "0.9.0"]]
   :sass {:target-path "resources/public/css"
          :source-paths ["resources/css"]}
 
@@ -22,7 +23,8 @@
 
   :aliases {"fig:build" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]
             "fig:min"   ["run" "-m" "figwheel.main" "-O" "advanced" "-bo" "dev"]
-            "fig:test"  ["run" "-m" "figwheel.main" "-co" "test.cljs.edn" "-m" "clj-fire.test-runner"]}
+            "fig:test"  ["run" "-m" "figwheel.main" "-co" "test.cljs.edn" "-m" "clj-fire.test-runner"]
+            "cljfmt-fix" ["cljfmt" "fix"]}
 
   :profiles {:dev {:dependencies [[com.bhauman/figwheel-main "0.2.17"]
                                   [org.slf4j/slf4j-nop "1.7.30"]

@@ -1,4 +1,4 @@
-(ns clj-fire.auth.events 
+(ns clj-fire.auth.events
   (:require [clj-fire.firebase :as fb]
             [re-frame.core :as re-frame]))
 

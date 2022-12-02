@@ -1,4 +1,4 @@
-(ns clj-fire.profile.views 
+(ns clj-fire.profile.views
   (:require [clj-fire.views :refer [panels]]))
 
 (defn main-panel []

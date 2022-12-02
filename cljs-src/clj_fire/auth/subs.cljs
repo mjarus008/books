@@ -1,4 +1,4 @@
-(ns clj-fire.auth.subs 
+(ns clj-fire.auth.subs
   (:require [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub
