@@ -7,8 +7,9 @@
 
 (def routes
   ["/" {""      :home
-        "stats" :stats
-        "settings" :settings}])
+        "home" :home
+        "settings" :settings
+        "profile" :profile}])
 
 (defn parse
   [url]
