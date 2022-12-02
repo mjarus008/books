@@ -1,6 +1,5 @@
 (ns clj-fire.views
-  (:require [clj-fire.events :as events]
-            [clj-fire.subs :as subs]
+  (:require [clj-fire.subs :as subs]
             [re-frame.core :as rf]))
 
 (defn- not-found []
