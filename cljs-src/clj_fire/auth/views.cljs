@@ -22,5 +22,5 @@
      (if logged-in?
        [comp]
        [:section
-        [:h1.login-header "Please login to you proceed"]
+        [:h1.login-header "Please login to continue"]
         [login-panel]]))))
