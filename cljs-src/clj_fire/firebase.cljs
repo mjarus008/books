@@ -25,7 +25,7 @@
                :uiShown
                (fn []
                  (print "UI shown."))}
-   :signInSuccessUrl "http://localhost:9500/"})
+   :signInSuccessUrl "http://localhost:9500/profile"})
 
 (defn- initialise-app [& _]
   (.initializeApp firebase fire-config))
