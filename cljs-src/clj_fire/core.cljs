@@ -1,4 +1,4 @@
-(ns ^:figwheel-hook clj-fire.core
+(ns ^:figwheel-hooks clj-fire.core
   (:require clj-fire.home.views
             [clj-fire.routes :as routes]
             [clj-fire.views :as views]
