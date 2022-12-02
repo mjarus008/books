@@ -1,21 +1,7 @@
 (ns clj-fire.auth.views
-  (:require [reagent.core :as reagent]
-            [clj-fire.firebase :as fb]
-            ["firebase/compat/app$default" :as firebase]))
-
-(def ^:private fb-config
-  {:signInOptions
-   [{:provider firebase.auth.EmailAuthProvider.PROVIDER_ID
-     :requireDisplayName false}
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID]
-   :callbacks {:signInSuccessWithAuthResult
-               (fn [auth-result _redirect-url]
-                 (print "auth result: " auth-result)
-                 true)
-               :uiShown
-               (fn []
-                 (print "UI shown."))}
-   :signInSuccessUrl "http://localhost:9500/"})
+  (:require [clj-fire.auth.events :as events]
+            [reagent.core :as reagent]
+            [re-frame.core :as re-frame]))
 
 (defn login-panel []
   (let [id "firebase-login"]
@@ -23,9 +9,7 @@
      {:display-name "firebase-login"
       :component-did-mount
       (fn [_this]
-        (fb/init-login-panel! 
-         (assoc fb-config :id id)))
+        (re-frame/dispatch [::events/init-fb-login-panel {:id id}]))
       :reagent-render
       (fn []
         [:div {:id id}])})))
-
