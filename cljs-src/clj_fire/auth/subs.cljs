@@ -7,7 +7,7 @@
    (:fb-user db)))
 
 (re-frame/reg-sub
- ::fb-state
+ ::fb-logged-in?
  :<- [::fb-user]
  (fn [fb-user _]
    (boolean (seq fb-user))))
