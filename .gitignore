@@ -26,3 +26,5 @@ node_modules/
 
 # JS bundle
 /resources/public/cljs-out/
+
+resources/public/
