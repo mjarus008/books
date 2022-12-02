@@ -16,4 +16,13 @@ resources/public/cljs-out/
 node_modules/
 
 
+# Calva
+/.clj-kondo/.cache
+.rebel_readline_history
 /.calva
+
+.envrc
+/.lsp
+
+# JS bundle
+/resources/public/cljs-out/
