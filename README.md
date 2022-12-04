@@ -29,9 +29,15 @@ To create a production build run:
 	lein clean
 	lein fig:min
 
-
+	
 ## License
 
 Copyright © 2018 FIXME
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+
+
+## Todo
+* Fix loading screens
+* Create this as a template for future Firebase based projects
+    * sha: `9830af4b08fb568535de33e4b408651695f44d3a`
