@@ -34,6 +34,7 @@
 (re-frame/reg-event-db
  ::clear-fb-user
  (fn [db _]
+   (print "logged out")
    (dissoc db :fb-user)))
 
 (re-frame/reg-event-fx
