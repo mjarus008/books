@@ -16,11 +16,11 @@
         [:div {:id id}])})))
 
 (defn auth-wrapper
-  ([comp] (auth-wrapper comp {}))
-  ([comp _opts]
+  ([comp] [auth-wrapper {} comp])
+  ([_opts comp]
    (let [logged-in? @(re-frame/subscribe [::auth.subs/fb-logged-in?])]
      (if logged-in?
-       [comp]
+       comp
        [:section
         [:h1.login-header "Please login to continue"]
         [login-panel]]))))
