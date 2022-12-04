@@ -3,7 +3,6 @@
             [clj-fire.auth.views :as auth.views]
             [clj-fire.utils :as utils]
             [clj-fire.views :refer [panels]]
-            [clojure.pprint :as pretty]
             [re-frame.core :as re-frame]))
 
 (defn content []
