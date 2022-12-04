@@ -1,5 +1,6 @@
 (ns clj-fire.profile.views
-  (:require [clj-fire.auth.subs :as auth.subs]
+  (:require [clj-fire.auth.events :as auth.events]
+            [clj-fire.auth.subs :as auth.subs]
             [clj-fire.auth.views :as auth.views]
             [clj-fire.utils :as utils]
             [clj-fire.views :refer [panels]]
@@ -9,6 +10,7 @@
   (let [fb-user @(re-frame/subscribe [::auth.subs/fb-user])]
     [:section
      [:h1 "Profile"]
+     [:button.sign-out {:on-click #(re-frame/dispatch [::auth.events/logout])} "logout"]
      [:pre.code-block (utils/pretty-str (select-keys fb-user [:display-name :providerData]))]]))
 
 (defn main-panel []

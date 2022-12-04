@@ -3,6 +3,7 @@
             ["firebase/compat/app$default" :as firebase]
             ["firebase/auth" :as auth]
             firebaseui
+            [promesa.core :as p]
             [re-frame.core :as re-frame]))
 
 (def ^:private fire-config #js {:apiKey "AIzaSyD2enijFZ1ovNxt8PAO_0GxKcUoClujrR4",
@@ -39,6 +40,11 @@
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)
                                                (re-frame/dispatch)))))
+
+(defn sign-out [{:keys [on-success on-failiure]}]
+  (-> (auth/signOut auth)
+      (p/then (re-frame/dispatch on-success))
+      (p/catch (re-frame/dispatch on-failiure))))
 
 (defn init-login-panel! [{:keys [id] :as opts}]
   (let [pointer (str "#" id)]

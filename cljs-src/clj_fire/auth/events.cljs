@@ -1,6 +1,7 @@
 (ns clj-fire.auth.events
   (:require [clj-fire.firebase :as fb]
-            [re-frame.core :as re-frame]))
+            [re-frame.core :as re-frame]
+            [clj-fire.utils :as utils]))
 
 (defn user-profile [user]
   (some-> user
@@ -24,3 +25,25 @@
  ::init-fb-login-panel
  (fn [_ [_ opts]]
    {:fb/init-login-panel opts}))
+
+(re-frame/reg-fx
+ :fb/logout
+ (fn [args]
+   (fb/sign-out args)))
+
+(re-frame/reg-event-db
+ ::clear-fb-user
+ (fn [db _]
+   (dissoc db :fb-user)))
+
+(re-frame/reg-event-fx
+ ::error
+ (fn [_ {:keys [ message]}]
+   (utils/pretty-str message)))
+
+(re-frame/reg-event-fx
+ ::logout
+ (fn [{:keys [db]} _]
+   {:fb/logout
+    {:on-success [::clear-fb-user]
+     :on-failure [::error {:msg "logout failed."}]}}))
