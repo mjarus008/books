@@ -1,7 +1,7 @@
 (ns clj-fire.firebase
-  (:require ["firebase/app" :as fire]
+  (:require ["firebase/auth" :as auth]
             ["firebase/compat/app$default" :as firebase]
-            ["firebase/auth" :as auth]
+            [clj-fire.log :as log]
             firebaseui
             [promesa.core :as p]
             [re-frame.core :as re-frame]))
@@ -21,11 +21,12 @@
     firebase.auth.GoogleAuthProvider.PROVIDER_ID]
    :callbacks {:signInSuccessWithAuthResult
                (fn [auth-result _redirect-url]
-                 (print "auth result: " auth-result)
+                 (log/info "Sign in was successful.")
+                 (log/info "auth result: " auth-result)
                  true)
                :uiShown
                (fn []
-                 (print "UI shown."))}
+                 (log/info "UI shown."))}
    :signInSuccessUrl "http://localhost:9500/profile"})
 
 (defn- initialise-app [& _]
