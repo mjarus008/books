@@ -39,7 +39,7 @@
 
 (re-frame/reg-event-fx
  ::error
- (fn [_ {:keys [ message]}]
+ (fn [_ {:keys [message]}]
    (utils/pretty-str message)))
 
 (re-frame/reg-event-fx
