@@ -11,3 +11,5 @@
  :<- [::fb-user]
  (fn [fb-user _]
    (boolean (seq fb-user))))
+
+(comment)
