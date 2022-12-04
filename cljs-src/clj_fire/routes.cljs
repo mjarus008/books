@@ -28,7 +28,17 @@
    history
    (apply bidi/path-for routes handler params)))
 
-(comment (bidi/path-for routes :stats))
+(defn form-url
+  ([handler] (form-url handler nil))
+  ([handler params]
+   (apply bidi/path-for routes handler (mapcat identity params))))
+
+(comment
+  (form-url :profile)
+  (bidi/path-for routes :profile )
+  )
+
+(comment (bidi/path-for routes :profile ))
 
 (defn start!
   []
