@@ -37,7 +37,8 @@
 (defonce ui (firebaseui.auth.AuthUI. (firebase.auth)))
 
 (defn on-auth-state-changed [evt]
-  (auth/onAuthStateChanged auth #(re-frame/dispatch evt)))
+  (auth/onAuthStateChanged auth(fn [user] (-> (conj evt user)
+                                              (re-frame/dispatch)))))
 
 (defn init-login-panel! [{:keys [id] :as opts}]
   (let [pointer (str "#" id)]
