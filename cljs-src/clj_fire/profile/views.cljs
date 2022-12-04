@@ -17,5 +17,5 @@
 
 (defmethod panels :profile
   [_]
-  [main-panel]) 
+  [main-panel])
 

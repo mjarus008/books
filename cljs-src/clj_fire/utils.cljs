@@ -1,4 +1,4 @@
-(ns clj-fire.utils 
+(ns clj-fire.utils
   (:require [cljs.pprint :as pretty]))
 
 (defn pretty-str [obj]

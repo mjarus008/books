@@ -35,10 +35,9 @@
 
 (comment
   (form-url :profile)
-  (bidi/path-for routes :profile )
-  )
+  (bidi/path-for routes :profile))
 
-(comment (bidi/path-for routes :profile ))
+(comment (bidi/path-for routes :profile))
 
 (defn start!
   []
