@@ -43,8 +43,8 @@
 
 (defn sign-out [{:keys [on-success on-failiure]}]
   (-> (auth/signOut auth)
-      (p/then (re-frame/dispatch on-success))
-      (p/catch (re-frame/dispatch on-failiure))))
+      (p/then #(re-frame/dispatch on-success))
+      (p/catch #(re-frame/dispatch on-failiure))))
 
 (defn init-login-panel! [{:keys [id] :as opts}]
   (let [pointer (str "#" id)]
