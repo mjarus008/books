@@ -1,0 +1,15 @@
+{:users
+ {:$userid
+  {:subscription "free"
+   :trial {:end-date "ISO 8601?"}
+   :books {:$bookid
+           {:bookmarked true
+            :last-read "BOOK_REF"}}}}
+ :books
+ {:$bookid
+  {:resouce "BOOK_URL"
+   :tier "free/subscribed"
+   :tags ["mathematics" "education"]}}
+ :conversations
+ {:reference "BOOK_REF"
+  :top-comment "Spelling mistake."}}
