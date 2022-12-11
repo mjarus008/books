@@ -8,10 +8,35 @@
           (.toJSON)
           (js->clj :keywordize-keys true)))
 
+(re-frame/reg-event-fx
+  ::auth-state-change
+  (fn [{:keys [db]} [_ user]]
+    (let [user-prof (user-profile user)]
+      {:fx [[:dispatch [::set-user user-prof]]
+            (when (seq user-prof)
+              [:dispatch [::subscribe-user user-prof]])]})))
+
 (re-frame/reg-event-db
  ::set-user
  (fn [db [_ user]]
-   (assoc db :fb-user (user-profile user))))
+   (assoc db :fb-user user)))
+
+(re-frame/reg-event-db
+ ::set-user-data
+ (fn [db [_ user-data]]
+   (prn :user-data user-data)
+   (assoc-in db [:user-data] user-data)))
+
+(re-frame/reg-event-fx
+ ::subscribe-user
+ (fn [{:keys [db]} [_ {:keys [uid]}]]
+   {:fx [[:fb/subscribe {:path [:users uid]
+                         :on-value [::set-user-data]}]]}))
+
+(re-frame/reg-fx
+ :fb/subscribe
+ (fn [args]
+   (fb/subscribe args)))
 
 ;; Firebase login panel
 
