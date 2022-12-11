@@ -15,7 +15,11 @@
     [:h1.chat__header "Chat room"]
     [:div.chat__conversation
      [message "Hello there!"]
-     [message "Sean" "Hello back!"]]]])
+     [message "Sean" "Hello back!"]
+     [:div.chat__container
+      [:input.chat__input {:type "text"
+                           :placeholder "Enter your message"}]
+      [:button {} "Send"]]]]])
 
 (defmethod panels :chat
   [_]
