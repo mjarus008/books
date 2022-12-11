@@ -1,4 +1,4 @@
-(ns clj-fire.log 
+(ns clj-fire.log
   (:require [re-frame.core :as re-frame]))
 
 (def warn prn)

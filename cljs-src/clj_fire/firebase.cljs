@@ -60,7 +60,7 @@
                      :something "hey"
                      :nothing nil})
   (assoc-in [:foo :age] 26)
-  
+
   (assoc-in [:users "hfyg6OMuJoNoYDcjeX7J6QHH9ks1"] {:age 27
                                                      :subscription :free
                                                      :books "book-id"}))
@@ -89,7 +89,7 @@
   ;; Can't block in Clojurescript, so need to use callbacks
   (get-in {:path [:foo]
            :on-success [:log/info]})
-  
+
   (get-in {:path [:foo :age]
            :on-success prn}))
 
@@ -100,9 +100,9 @@
 
 (comment
   (update-in [:foo :age] inc)
-  
+
   ;; my uid (Google login)
-  
+
   (update-in [:users "hfyg6OMuJoNoYDcjeX7J6QHH9ks1" :age] inc))
 
 (defn subscribe [{:keys [path on-value]}]

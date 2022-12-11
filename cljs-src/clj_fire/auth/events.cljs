@@ -9,12 +9,12 @@
           (js->clj :keywordize-keys true)))
 
 (re-frame/reg-event-fx
-  ::auth-state-change
-  (fn [{:keys [db]} [_ user]]
-    (let [user-prof (user-profile user)]
-      {:fx [[:dispatch [::set-user user-prof]]
-            (when (seq user-prof)
-              [:dispatch [::subscribe-user user-prof]])]})))
+ ::auth-state-change
+ (fn [{:keys [db]} [_ user]]
+   (let [user-prof (user-profile user)]
+     {:fx [[:dispatch [::set-user user-prof]]
+           (when (seq user-prof)
+             [:dispatch [::subscribe-user user-prof]])]})))
 
 (re-frame/reg-event-db
  ::set-user
