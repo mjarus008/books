@@ -92,7 +92,15 @@
            (fn [v] (assoc-in path (apply f v args)))}))
 
 (comment
-  (update-in [:foo :age] inc))
+(defn subscribe [{:keys [path on-value]}]
+  (let [path-str (path->path-str path)
+        ref (database/ref dbase path-str)]
+    (database/onValue ref (fn [snapshot]
+                            (let [value (when (.exists snapshot)
+                                          (-> (.val snapshot)
+                                              (js->clj :keywordize-keys true)))]
+                              (re-frame/dispatch (conj on-value value)))))))
+
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)
                                                (re-frame/dispatch)))))
