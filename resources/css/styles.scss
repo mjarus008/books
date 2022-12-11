@@ -29,3 +29,28 @@
     text-decoration: none;
     text-transform: uppercase;
 }
+
+// Chat Room
+
+.chat {
+    width: 100%;
+    &__header {
+        color: lightblue;
+        font-size: 24px;
+    }
+
+    &__conversation {
+        min-height: 400px;
+        width: 700px;
+        background-color: lightgray;
+        margin: 0 auto;
+    }
+}
+
+.message {
+    border: 1px solid gray;
+    &__sender {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+}
