@@ -9,7 +9,8 @@
   ["/" {""      :home
         "home" :home
         "settings" :settings
-        "profile" :profile}])
+        "profile" :profile
+        "chat" :chat}])
 
 (defn parse
   [url]

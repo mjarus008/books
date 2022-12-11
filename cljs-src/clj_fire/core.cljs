@@ -1,5 +1,6 @@
 (ns ^:figwheel-hooks clj-fire.core
   (:require [clj-fire.firebase :as fb]
+            clj-fire.chat.views
             clj-fire.home.views
             clj-fire.profile.views
             [clj-fire.routes :as routes]
