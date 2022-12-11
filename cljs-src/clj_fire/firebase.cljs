@@ -1,10 +1,11 @@
 (ns clj-fire.firebase
   (:require ["firebase/auth" :as auth]
             ["firebase/compat/app$default" :as firebase]
+            ["firebase/database" :as database]
             [clj-fire.log :as log]
             firebaseui
             [promesa.core :as p]
-            [re-frame.core :as re-frame]))
+  (:refer-clojure :exclude [assoc-in get-in update-in]))
 
 (def ^:private fire-config #js {:apiKey "AIzaSyD2enijFZ1ovNxt8PAO_0GxKcUoClujrR4",
                                 :authDomain "moloweni.firebaseapp.com",
@@ -38,6 +39,60 @@
 
 (defonce ui (firebaseui.auth.AuthUI. (firebase.auth)))
 
+(defonce dbase (database/getDatabase app))
+
+(defn- path->path-str [path]
+  (->> path
+       (map name)
+       (str/join "/")))
+
+(defn assoc-in [path new-value]
+  (let [str-path (path->path-str path)]
+    (database/set
+     (database/ref dbase str-path)
+     (clj->js new-value))))
+
+(comment
+  (assoc-in [:foo]  {:msg "Molweni wolrd!"
+                     :something "hey"
+                     :nothing nil})
+  (assoc-in [:foo :age] 26))
+
+(defn get-in [{:keys [path on-success on-failiure]}]
+  (let [str-path (path->path-str path)
+        db-ref (database/ref dbase)]
+    (-> (database/get
+         (database/child db-ref str-path))
+        (p/then (fn [snapshot]
+                  (when (.exists snapshot)
+                    (let [value (-> (.val snapshot)
+                                    (js->clj :keywordize-keys true))]
+                      (if (vector? on-success)
+                        (re-frame/dispatch
+                         (conj on-success value))
+                        (on-success value))))))
+        (p/catch (fn [error]
+                   (log/error "There was an error reading the data at " path ". error: " error)
+                   (if (vector? on-failiure)
+                     (re-frame/dispatch
+                      (conj on-failiure error))
+                     (on-failiure error)))))))
+
+(comment
+  ;; Can't block in Clojurescript, so need to use callbacks
+  (get-in {:path [:foo]
+           :on-success [:log/info]})
+  
+  (get-in {:path [:foo]
+           :on-success prn}))
+
+(defn update-in [path f & args]
+  (get-in {:path path
+           :on-success
+           (fn [v] (assoc-in path (apply f v args)))}))
+
+(comment
+  (update-in [:foo :age] inc))
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)
                                                (re-frame/dispatch)))))
