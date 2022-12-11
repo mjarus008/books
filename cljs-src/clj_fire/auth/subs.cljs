@@ -12,4 +12,11 @@
  (fn [fb-user _]
    (boolean (seq fb-user))))
 
-(comment)
+(re-frame/reg-sub
+ ::user-data
+ (fn [db _]
+   (:user-data db)))
+
+(comment
+  @(re-frame/subscribe [::fb-user])
+  @(re-frame/subscribe [::user-data]))
