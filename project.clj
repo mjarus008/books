@@ -14,9 +14,10 @@
   :dependencies [[bidi "2.1.6"]
                  [day8.re-frame/http-fx "0.2.4"]
                  [funcool/promesa "10.0.544"]
-                 [lifecheq/pushy "0.3.9"]
+                 [lifecheq/pushy "0.3.9"] 
                  [org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.11.4"]
+                 [org.clojure/core.async "1.6.673"]
                  [reagent "1.1.1"  :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]
                  [re-frame "1.2.0"]]
 
