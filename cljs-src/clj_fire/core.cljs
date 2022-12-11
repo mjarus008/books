@@ -16,7 +16,7 @@
     (rdom/render [views/main] root-el)))
 
 (defn init []
-  (fb/on-auth-state-changed [::fb-auth/set-user])
+  (fb/on-auth-state-changed [::fb-auth/auth-state-change])
   (routes/start!)
   (mount-root))
 
