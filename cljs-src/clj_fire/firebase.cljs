@@ -3,8 +3,10 @@
             ["firebase/compat/app$default" :as firebase]
             ["firebase/database" :as database]
             [clj-fire.log :as log]
+            [clojure.string :as str]
             firebaseui
             [promesa.core :as p]
+            [re-frame.core :as re-frame])
   (:refer-clojure :exclude [assoc-in get-in update-in]))
 
 (def ^:private fire-config #js {:apiKey "AIzaSyD2enijFZ1ovNxt8PAO_0GxKcUoClujrR4",
@@ -57,7 +59,11 @@
   (assoc-in [:foo]  {:msg "Molweni wolrd!"
                      :something "hey"
                      :nothing nil})
-  (assoc-in [:foo :age] 26))
+  (assoc-in [:foo :age] 26)
+  
+  (assoc-in [:users "hfyg6OMuJoNoYDcjeX7J6QHH9ks1"] {:age 27
+                                                     :subscription :free
+                                                     :books "book-id"}))
 
 (defn get-in [{:keys [path on-success on-failiure]}]
   (let [str-path (path->path-str path)
@@ -84,7 +90,7 @@
   (get-in {:path [:foo]
            :on-success [:log/info]})
   
-  (get-in {:path [:foo]
+  (get-in {:path [:foo :age]
            :on-success prn}))
 
 (defn update-in [path f & args]
@@ -93,6 +99,12 @@
            (fn [v] (assoc-in path (apply f v args)))}))
 
 (comment
+  (update-in [:foo :age] inc)
+  
+  ;; my uid (Google login)
+  
+  (update-in [:users "hfyg6OMuJoNoYDcjeX7J6QHH9ks1" :age] inc))
+
 (defn subscribe [{:keys [path on-value]}]
   (let [path-str (path->path-str path)
         ref (database/ref dbase path-str)]
