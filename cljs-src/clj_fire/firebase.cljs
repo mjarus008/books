@@ -13,7 +13,8 @@
                                 :storageBucket "moloweni.appspot.com",
                                 :messagingSenderId "811773534703",
                                 :appId "1:811773534703:web:23dfb3d8a6e7973f70d61a",
-                                :measurementId "G-CZD23Y8S7S"})
+                                :measurementId "G-CZD23Y8S7S"
+                                :databaseURL "https://moloweni-default-rtdb.firebaseio.com"})
 
 (def fb-login-options
   {:signInOptions
