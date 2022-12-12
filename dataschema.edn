@@ -11,5 +11,12 @@
    :tier "free/subscribed"
    :tags ["mathematics" "education"]}}
  :conversations
- {:reference "BOOK_REF"
-  :top-comment "Spelling mistake."}}
+ {:$conversation-id
+  {:reference "BOOK_REF"
+   :top-comment "Spelling mistake."}}
+ :messages
+ {:$conversation-id
+  {:$message-id
+   {:content "markdown"
+    :sender "name"}}}
+ }
