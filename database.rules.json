@@ -9,6 +9,12 @@
     "foo": {
       ".read": true,
       ".write": true
-    }
+    },
+      "messages": {
+        "$conversation-id": {
+          ".read": true,
+            ".write": true
+        }
+      }
   }
 }
