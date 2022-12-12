@@ -10,7 +10,8 @@
         "home" :home
         "settings" :settings
         "profile" :profile
-        "chat" :chat}])
+        "chat" :chat
+        ["/chat" :chat] :conversation}])
 
 (defn parse
   [url]

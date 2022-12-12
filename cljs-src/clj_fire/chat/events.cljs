@@ -19,7 +19,7 @@
 (re-frame/reg-event-fx
  ::subscribe-to-thread
  (fn [{:keys [db]} [_ thread-id]]
-   {:fx [[:fb/subscribe 
+   {:fx [[:fb/subscribe
           {:path [:messages thread-id]
            :on-value [::message-on-value thread-id]}]]}))
 
