@@ -114,6 +114,14 @@
                                               (js->clj :keywordize-keys true)))]
                               (re-frame/dispatch (conj on-value value)))))))
 
+(defn new-message [sender conversation-id message]
+  (let [path [:messages conversation-id]
+        ref (database/ref dbase (path->path-str path))
+        message-ref (database/push ref)]
+    (database/set message-ref
+                  #js {:content message
+                       :sender sender})))
+
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)
                                                (re-frame/dispatch)))))
