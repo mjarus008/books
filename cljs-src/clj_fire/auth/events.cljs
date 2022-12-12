@@ -1,7 +1,8 @@
 (ns clj-fire.auth.events
   (:require [clj-fire.firebase :as fb]
-            [re-frame.core :as re-frame]
-            [clj-fire.utils :as utils]))
+            [clj-fire.log :as log]
+            [clj-fire.utils :as utils]
+            [re-frame.core :as re-frame]))
 
 (defn user-profile [user]
   (some-> user
@@ -24,7 +25,7 @@
 (re-frame/reg-event-db
  ::set-user-data
  (fn [db [_ user-data]]
-   (prn :user-data user-data)
+   (log/info :user-data user-data)
    (assoc-in db [:user-data] user-data)))
 
 (re-frame/reg-event-fx
