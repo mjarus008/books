@@ -4,8 +4,7 @@
             [clj-fire.chat.subs :as chat.subs]
             [clj-fire.views :refer [panels]]
             [re-frame.core :as re-frame]
-            [reagent.core :as reagent]
-            [clj-fire.utils :as utils]))
+            [reagent.core :as reagent]))
 
 (defn message
   ([content]
@@ -28,6 +27,7 @@
                              (reset! *message ""))} "Send"]])))
 
 (defn main-panel []
+  ;; TODO(Lilitha): should unsubscribe to Firebase when component is distroyed
   (let [_ (re-frame/dispatch [::chat.events/subscribe-to-thread "my-convo-id"])]
     (fn []
       (let [messages @(re-frame/subscribe [::chat.subs/messages "my-convo-id"])]
