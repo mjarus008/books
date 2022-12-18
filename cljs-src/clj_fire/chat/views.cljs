@@ -36,7 +36,8 @@
           [:h1.chat__header "Chat room"]
           [:div.chat__conversation
            (into [:<>]
-                 (map (fn [{:keys [content sender]}]
+                 (map (fn [{:keys [content sender key]}]
+                        ^{:key key}
                         [message sender content]) messages))
            [:div.chat__container
             [message-input]]]]]))))

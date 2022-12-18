@@ -122,6 +122,20 @@
                   #js {:content message
                        :sender sender})))
 
+(re-frame/reg-fx
+ :fb/subscribe-thread
+ (fn [{:keys [on-value]
+       ?thread-id :thread-id}]
+   (when-let [thread-id ?thread-id]
+     (let [thread-ref (database/ref dbase (str "messages/" thread-id))]
+       (database/onChildAdded thread-ref (fn [message-snapshot]
+                                           (let [message (.val message-snapshot)
+                                                 message-key (.-key message-snapshot)]
+                                             (re-frame/dispatch (conj on-value
+                                                                      (-> message
+                                                                          (js->clj :keywordize-keys true)
+                                                                          (assoc :key message-key)))))))))))
+
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)
                                                (re-frame/dispatch)))))
