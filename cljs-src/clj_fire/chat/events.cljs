@@ -7,8 +7,8 @@
  (fn [{:keys [db]} [_ conversation-id message]]
    (let [sender (get-in db [:fb-user :displayName])]
      {:fx [(when message [:chat/send-message {:sender (or sender "anonymous")
-                                             :conversation-id conversation-id
-                                             :message message}])]})))
+                                              :conversation-id conversation-id
+                                              :message message}])]})))
 
 (re-frame/reg-fx
  :chat/send-message
