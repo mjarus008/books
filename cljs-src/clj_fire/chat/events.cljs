@@ -27,3 +27,10 @@
     :fx [[:fb/subscribe-thread
           {:thread-id thread-id
            :on-value [:chat/add-message thread-id]}]]}))
+
+(re-frame/reg-event-fx
+ ::unsubscribe-to-thread
+ (fn [{:keys [db]} [_ thread-id]]
+   {:db (update-in db [:threads] dissoc thread-id)
+    :fx [[:fb/unsubscribe-to-thread
+          {:thread-id thread-id}]]}))

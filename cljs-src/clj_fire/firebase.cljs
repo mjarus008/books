@@ -136,6 +136,13 @@
                                                                           (js->clj :keywordize-keys true)
                                                                           (assoc :key message-key)))))))))))
 
+(re-frame/reg-fx
+ :fb/unsubscribe-to-thread
+ (fn [{?thread-id :thread-id}]
+   (when-some [thread-id ?thread-id]
+     (let [thread-ref (database/ref dbase (str "messages/" thread-id))]
+       (database/off thread-ref)))))
+
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)
                                                (re-frame/dispatch)))))
