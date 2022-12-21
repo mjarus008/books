@@ -126,7 +126,7 @@
  :fb/subscribe-thread
  (fn [{:keys [on-value]
        ?thread-id :thread-id}]
-   (when-let [thread-id ?thread-id]
+   (when-some [thread-id ?thread-id]
      (let [thread-ref (database/ref dbase (str "messages/" thread-id))]
        (database/onChildAdded thread-ref (fn [message-snapshot]
                                            (let [message (.val message-snapshot)
