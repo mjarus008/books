@@ -11,9 +11,9 @@
       ".write": true
     },
       "messages": {
-        "$conversation-id": {
+        "$conversation_id": {
           ".read": true,
-            ".write": true
+            ".write": "newData.child('sender_uid').exists() && newData.child('sender_uid').val() === auth.uid"
         }
       }
   }
