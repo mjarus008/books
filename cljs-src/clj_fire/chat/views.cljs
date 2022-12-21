@@ -28,19 +28,20 @@
 
 (defn main-panel []
   ;; TODO(Lilitha): should unsubscribe to Firebase when component is distroyed
-  (let [_ (re-frame/dispatch [::chat.events/subscribe-to-thread "my-convo-id"])]
-    (fn []
-      (let [messages @(re-frame/subscribe [::chat.subs/messages "my-convo-id"])]
-        [auth.views/auth-wrapper
-         [:section.chat
-          [:h1.chat__header "Chat room"]
-          [:div.chat__conversation
-           (into [:<>]
-                 (map (fn [{:keys [content sender key]}]
-                        ^{:key key}
-                        [message sender content]) messages))
-           [:div.chat__container
-            [message-input]]]]]))))
+  (reagent/with-let [_ (re-frame/dispatch [::chat.events/subscribe-to-thread "my-convo-id"])]
+    (let [messages @(re-frame/subscribe [::chat.subs/messages "my-convo-id"])]
+      [auth.views/auth-wrapper
+       [:section.chat
+        [:h1.chat__header "Chat room"]
+        [:div.chat__conversation
+         (into [:<>]
+               (map (fn [{:keys [content sender key]}]
+                      ^{:key key}
+                      [message sender content]) messages))
+         [:div.chat__container
+          [message-input]]]]])
+    (finally
+      (re-frame/dispatch [::chat.events/unsubscribe-to-thread]))))
 
 (defmethod panels :chat
   [_]
