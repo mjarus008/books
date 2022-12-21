@@ -5,15 +5,17 @@
 (re-frame/reg-event-fx
  ::send-message
  (fn [{:keys [db]} [_ conversation-id message]]
-   (let [sender (get-in db [:fb-user :displayName])]
+   (let [sender (get-in db [:fb-user :displayName])
+         uid (get-in db [:fb-user :uid])]
      {:fx [(when message [:chat/send-message {:sender (or sender "anonymous")
                                               :conversation-id conversation-id
-                                              :message message}])]})))
+                                              :message message
+                                              :uid uid}])]})))
 
 (re-frame/reg-fx
  :chat/send-message
- (fn [{:keys [sender conversation-id  message]}]
-   (fb/new-message sender conversation-id message)))
+ (fn [{:keys [conversation-id message sender uid]}]
+   (fb/new-message sender uid conversation-id message)))
 
 (re-frame/reg-event-db
  :chat/add-message

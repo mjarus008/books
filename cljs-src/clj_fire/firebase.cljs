@@ -114,13 +114,14 @@
                                               (js->clj :keywordize-keys true)))]
                               (re-frame/dispatch (conj on-value value)))))))
 
-(defn new-message [sender conversation-id message]
+(defn new-message [sender uid conversation-id message]
   (let [path [:messages conversation-id]
         ref (database/ref dbase (path->path-str path))
         message-ref (database/push ref)]
     (database/set message-ref
                   #js {:content message
-                       :sender sender})))
+                       :sender sender
+                       :sender_uid uid})))
 
 (re-frame/reg-fx
  :fb/subscribe-thread
