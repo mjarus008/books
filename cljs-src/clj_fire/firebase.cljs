@@ -2,6 +2,7 @@
   (:require ["firebase/auth" :as auth]
             ["firebase/compat/app$default" :as firebase]
             ["firebase/database" :as database]
+            ["firebase/storage" :as storage]
             [clj-fire.log :as log]
             [clojure.string :as str]
             firebaseui
@@ -148,6 +149,12 @@
    (when-some [thread-id ?thread-id]
      (let [thread-ref (database/ref dbase (str "messages/" thread-id))]
        (database/off thread-ref)))))
+
+(comment
+  (let [st (storage/getStorage)
+        reference (storage/ref st "books/book1.pdf")]
+    )
+  )
 
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)
