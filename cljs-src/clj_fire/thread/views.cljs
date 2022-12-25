@@ -1,5 +1,6 @@
 (ns clj-fire.thread.views
   (:require [clj-fire.auth.views :as auth.views]
+            [clj-fire.subs :as subs]
             [clj-fire.thread.events :as thread.events]
             [clj-fire.auth.subs :as auth.subs]
             [clj-fire.thread.subs :as thread.subs]
@@ -27,9 +28,9 @@
                              (re-frame/dispatch [::thread.events/send-message "my-convo-id" @*message])
                              (reset! *message ""))} "Send"]])))
 
-(defn main-panel []
-  (reagent/with-let [_ (re-frame/dispatch [::thread.events/subscribe-to-thread "my-convo-id"])]
-    (let [messages @(re-frame/subscribe [::thread.subs/messages "my-convo-id"])
+(defn main-panel [thread-id]
+  (reagent/with-let [_ (re-frame/dispatch [::thread.events/subscribe-to-thread thread-id])]
+    (let [messages @(re-frame/subscribe [::thread.subs/messages thread-id])
           uid @(re-frame/subscribe [::auth.subs/fb-uid])]
       [auth.views/auth-wrapper
        [:section.thread
@@ -49,4 +50,5 @@
 
 (defmethod panels :thread
   [_]
-  [main-panel])
+  (let [{{:keys [thread-id]} :route-params} @(re-frame/subscribe [::subs/route])]
+    [main-panel thread-id]))
