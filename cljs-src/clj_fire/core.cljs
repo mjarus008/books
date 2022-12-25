@@ -22,4 +22,5 @@
   (routes/start!)
   (mount-root))
 
+#_:clj-kondo/ignore
 (defonce _initial (init))
