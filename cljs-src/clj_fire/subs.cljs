@@ -1,12 +1,12 @@
 (ns clj-fire.subs
-  (:require [re-frame.core :as rf]))
+  (:require [re-frame.core :as re-frame]))
 
-(rf/reg-sub
+(re-frame/reg-sub
  ::route
  (fn [db _]
    (:routes db)))
 
-(rf/reg-sub
+(re-frame/reg-sub
  ::handler
  :<- [::route]
  (fn [route _]
