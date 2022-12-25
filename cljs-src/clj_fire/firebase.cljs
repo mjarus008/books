@@ -152,9 +152,7 @@
 
 (comment
   (let [st (storage/getStorage)
-        reference (storage/ref st "books/book1.pdf")]
-    )
-  )
+        reference (storage/ref st "books/book1.pdf")]))
 
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)

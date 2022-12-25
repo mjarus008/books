@@ -8,9 +8,9 @@
    (let [sender (get-in db [:fb-user :displayName])
          uid (get-in db [:fb-user :uid])]
      {:fx [(when message [:thread/send-message {:sender (or sender "anonymous")
-                                              :conversation-id conversation-id
-                                              :message message
-                                              :uid uid}])]})))
+                                                :conversation-id conversation-id
+                                                :message message
+                                                :uid uid}])]})))
 
 (re-frame/reg-fx
  :thread/send-message

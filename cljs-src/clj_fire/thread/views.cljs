@@ -20,10 +20,10 @@
     (fn []
       [:<>
        [:input.thread__input {:type "text"
-                            :placeholder "Enter your message"
-                            :value @*message
-                            :on-change (fn [e]
-                                         (reset! *message (-> e .-target .-value)))}]
+                              :placeholder "Enter your message"
+                              :value @*message
+                              :on-change (fn [e]
+                                           (reset! *message (-> e .-target .-value)))}]
        [:button {:on-click (fn [_evt]
                              (re-frame/dispatch [::thread.events/send-message "my-convo-id" @*message])
                              (reset! *message ""))} "Send"]])))
