@@ -1,8 +1,8 @@
-(ns clj-fire.chat.views
+(ns clj-fire.thread.views
   (:require [clj-fire.auth.views :as auth.views]
-            [clj-fire.chat.events :as chat.events]
+            [clj-fire.thread.events :as thread.events]
             [clj-fire.auth.subs :as auth.subs]
-            [clj-fire.chat.subs :as chat.subs]
+            [clj-fire.thread.subs :as thread.subs]
             [clj-fire.views :refer [panels]]
             [re-frame.core :as re-frame]
             [reagent.core :as reagent]))
@@ -18,23 +18,23 @@
   (let [*message (reagent/atom "")]
     (fn []
       [:<>
-       [:input.chat__input {:type "text"
+       [:input.thread__input {:type "text"
                             :placeholder "Enter your message"
                             :value @*message
                             :on-change (fn [e]
                                          (reset! *message (-> e .-target .-value)))}]
        [:button {:on-click (fn [_evt]
-                             (re-frame/dispatch [::chat.events/send-message "my-convo-id" @*message])
+                             (re-frame/dispatch [::thread.events/send-message "my-convo-id" @*message])
                              (reset! *message ""))} "Send"]])))
 
 (defn main-panel []
-  (reagent/with-let [_ (re-frame/dispatch [::chat.events/subscribe-to-thread "my-convo-id"])]
-    (let [messages @(re-frame/subscribe [::chat.subs/messages "my-convo-id"])
+  (reagent/with-let [_ (re-frame/dispatch [::thread.events/subscribe-to-thread "my-convo-id"])]
+    (let [messages @(re-frame/subscribe [::thread.subs/messages "my-convo-id"])
           uid @(re-frame/subscribe [::auth.subs/fb-uid])]
       [auth.views/auth-wrapper
-       [:section.chat
-        [:h1.chat__header "Chat room"]
-        [:div.chat__conversation
+       [:section.thread
+        [:h1.thread__header "Chat room"]
+        [:div.thread__conversation
          (into [:<>]
                (for [{:keys [content sender_uid sender key]} messages
                      :let [sender-name (when
@@ -42,11 +42,11 @@
                                          sender)]]
                  ^{:key key}
                  [message sender-name content]))
-         [:div.chat__container
+         [:div.thread__container
           [message-input]]]]])
     (finally
-      (re-frame/dispatch [::chat.events/unsubscribe-to-thread]))))
+      (re-frame/dispatch [::thread.events/unsubscribe-to-thread]))))
 
-(defmethod panels :chat
+(defmethod panels :thread
   [_]
   [main-panel])

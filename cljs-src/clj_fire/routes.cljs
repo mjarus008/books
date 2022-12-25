@@ -10,8 +10,7 @@
         "home" :home
         "settings" :settings
         "profile" :profile
-        "chat" :chat
-        ["/chat" :chat] :conversation}])
+        ["threads/" :thread-id] :thread}])
 
 (defn parse
   [url]
@@ -36,8 +35,8 @@
    (apply bidi/path-for routes handler (mapcat identity params))))
 
 (comment
-  (form-url :profile)
-  (bidi/path-for routes :profile))
+  (form-url :thread {:thread-id "m"})
+  (bidi/path-for routes :profile {:thread-id "m"}))
 
 (comment (bidi/path-for routes :profile))
 

@@ -1,4 +1,4 @@
-(ns clj-fire.chat.subs
+(ns clj-fire.thread.subs
   (:require [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub

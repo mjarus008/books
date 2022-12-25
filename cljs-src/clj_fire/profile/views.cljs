@@ -14,7 +14,7 @@
      [:button.sign-out {:on-click #(re-frame/dispatch [::auth.events/logout])} "logout"]
      [:pre.code-block (utils/pretty-str (select-keys fb-user [:display-name :providerData]))]
      [:br]
-     [:a {:href (routes/form-url :chat)} "go to chat"]]))
+     [:a {:href (routes/form-url :thread {:thread-id "my-convo-id"})} "go to thread"]]))
 
 (defn main-panel []
   [auth.views/auth-wrapper [content]])
