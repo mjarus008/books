@@ -1,5 +1,5 @@
 (ns clj-fire.events
-  (:require [re-frame.core :as rf]))
+  (:require [re-frame.core :as re-frame]))
 
 (defn navigate-to [handler params]
   (let [route (->> params
@@ -8,7 +8,7 @@
                    (cons handler))]
     {:navigate route}))
 
-(rf/reg-event-fx
+(re-frame/reg-event-fx
  ::navigate-to
  (fn [_ [_ handler params]]
    (navigate-to handler params)))
@@ -21,7 +21,7 @@
          flatten
          (cons handler))))
 
-(rf/reg-event-db
+(re-frame/reg-event-db
  ::set-route
  (fn [db [_ params]]
    (assoc db :routes params)))
