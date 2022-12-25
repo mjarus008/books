@@ -13,7 +13,8 @@
       "messages": {
         "$conversation_id": {
           ".read": true,
-            ".write": "newData.child('sender_uid').exists() && newData.child('sender_uid').val() === auth.uid"
+          "$message-id":{
+            ".write": "newData.child('sender_uid').exists() && newData.child('sender_uid').val() === auth.uid"} 
         }
       }
   }
