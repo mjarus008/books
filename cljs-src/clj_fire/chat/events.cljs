@@ -22,13 +22,20 @@
  (fn [db [_ thread-id message]]
    (update-in db [:threads thread-id] (fnil conj []) message)))
 
+(re-frame/reg-event-db
+ :chat/delete-message
+ (fn [db [_ thread-id message-id]]
+   (-> db
+       (update-in [:threads thread-id] #(filterv (comp (partial not= message-id) :key) %)))))
+
 (re-frame/reg-event-fx
  ::subscribe-to-thread
  (fn [{:keys [db]} [_ thread-id]]
    {:db (update-in db [:threads] dissoc thread-id)
     :fx [[:fb/subscribe-thread
           {:thread-id thread-id
-           :on-value [:chat/add-message thread-id]}]]}))
+           :on-value [:chat/add-message thread-id]
+           :on-delete [:chat/delete-message thread-id]}]]}))
 
 (re-frame/reg-event-fx
  ::unsubscribe-to-thread

@@ -125,17 +125,22 @@
 
 (re-frame/reg-fx
  :fb/subscribe-thread
- (fn [{:keys [on-value]
+ (fn [{:keys [on-delete on-value]
        ?thread-id :thread-id}]
    (when-some [thread-id ?thread-id]
      (let [thread-ref (database/ref dbase (str "messages/" thread-id))]
-       (database/onChildAdded thread-ref (fn [message-snapshot]
-                                           (let [message (.val message-snapshot)
-                                                 message-key (.-key message-snapshot)]
-                                             (re-frame/dispatch (conj on-value
-                                                                      (-> message
-                                                                          (js->clj :keywordize-keys true)
-                                                                          (assoc :key message-key)))))))))))
+       (when (some? on-value)
+         (database/onChildAdded thread-ref (fn [message-snapshot]
+                                             (let [message (.val message-snapshot)
+                                                   message-key (.-key message-snapshot)]
+                                               (re-frame/dispatch (conj on-value
+                                                                        (-> message
+                                                                            (js->clj :keywordize-keys true)
+                                                                            (assoc :key message-key))))))))
+       (when (some? on-delete)
+         (database/onChildRemoved thread-ref (fn [message-snapshot]
+                                               (let [message-key (.-key message-snapshot)]
+                                                 (re-frame/dispatch (conj on-delete message-key))))))))))
 
 (re-frame/reg-fx
  :fb/unsubscribe-to-thread
