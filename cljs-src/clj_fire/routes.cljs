@@ -10,7 +10,8 @@
         "home" :home
         "settings" :settings
         "profile" :profile
-        ["threads/" :thread-id] :thread}])
+        ["threads/" :thread-id] :thread
+        ["books/" :book-id] :book}])
 
 (defn parse
   [url]
