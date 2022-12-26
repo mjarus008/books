@@ -17,7 +17,9 @@
        [:div
         [:a.view-profile {:href (routes/form-url :profile)} "View profile"]
         [:br]
-        [:a.view-profile {:href (routes/form-url :thread {:thread-id "my-convo-id"})} "Go to thread"]])]))
+        [:a.view-profile {:href (routes/form-url :thread {:thread-id "my-convo-id"})} "Go to thread"]
+        [:br]
+        [:a.view-profile {:href (routes/form-url :books)} "Go to books"]])]))
 
 (defmethod panels :home
   [_]
