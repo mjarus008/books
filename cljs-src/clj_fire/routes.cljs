@@ -7,11 +7,13 @@
 
 (def routes
   ["/" {""      :home
+        "books" :books
+        ["books/" :book-id] :book
         "home" :home
         "settings" :settings
         "profile" :profile
-        ["threads/" :thread-id] :thread
-        ["books/" :book-id] :book}])
+        "threads" :threads
+        ["threads/" :thread-id] :thread}])
 
 (defn parse
   [url]

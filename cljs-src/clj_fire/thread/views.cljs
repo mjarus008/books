@@ -28,7 +28,7 @@
                              (re-frame/dispatch [::thread.events/send-message "my-convo-id" @*message])
                              (reset! *message ""))} "Send"]])))
 
-(defn main-panel [thread-id]
+(defn thread-panel [thread-id]
   (reagent/with-let [_ (re-frame/dispatch [::thread.events/subscribe-to-thread thread-id])]
     (let [messages @(re-frame/subscribe [::thread.subs/messages thread-id])
           uid @(re-frame/subscribe [::auth.subs/fb-uid])]
@@ -49,6 +49,14 @@
       (re-frame/dispatch [::thread.events/unsubscribe-to-thread]))))
 
 (defmethod panels :thread
+  [{{:keys [thread-id]} :route-params}]
+  [thread-panel thread-id])
+
+(defn threads-panel []
+  [:section
+   [:h1 "Threads"]
+   [:div "TODO(Lilitha)"]])
+
+(defmethod panels :threads
   [_]
-  (let [{{:keys [thread-id]} :route-params} @(re-frame/subscribe [::subs/route])]
-    [main-panel thread-id]))
+  [threads-panel])

@@ -1,15 +1,18 @@
 (ns clj-fire.views
   (:require [clj-fire.subs :as subs]
-            [re-frame.core :as rf]))
+            [re-frame.core :as rf]
+            [clj-fire.utils :as utils]))
 
-(defn- not-found []
-  [:p "The page you are looking for could not be found."])
+(defn- not-found [params]
+  [:section
+   [:h3 "The page you are looking for could not be found."]
+   [:pre (utils/pretty-str params)]])
 
-(defmulti panels identity)
+(defmulti panels :handler)
 (defmethod panels :default
-  [_]
-  [not-found])
+  [params]
+  [not-found params])
 
 (defn main []
-  (let [handler @(rf/subscribe [::subs/handler])]
-    [panels handler]))
+  (let [route @(rf/subscribe [::subs/route])]
+    [panels route]))
