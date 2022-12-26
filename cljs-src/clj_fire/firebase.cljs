@@ -41,6 +41,8 @@
 
 (defonce auth (auth/getAuth app))
 
+(defonce storage (storage/getStorage))
+
 (defonce ui (firebaseui.auth.AuthUI. (firebase.auth)))
 
 (defonce dbase (database/getDatabase app))
@@ -166,3 +168,14 @@
 (defn init-login-panel! [{:keys [id] :as opts}]
   (let [pointer (str "#" id)]
     (.start ui pointer (clj->js (dissoc opts :id)))))
+
+(re-frame/reg-fx
+ :fb/upload-file
+ (fn [[file-blob {:keys [path on-sucess] :as args}]]
+   (log/trace :file-blob file-blob)
+   (log/trace :args args)
+   (let [file-ref (storage/ref storage (path->path-str path))]
+     (-> (storage/uploadBytes file-ref file-blob)
+         (.then (fn [_snapshot]
+                  (when (some? on-sucess)
+                    (re-frame/dispatch on-sucess))))))))
