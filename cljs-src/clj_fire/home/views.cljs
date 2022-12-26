@@ -15,7 +15,9 @@
      (if-not logged-in?
        [auth.views/login-panel]
        [:div
-        [:a.view-profile {:href (routes/form-url :profile)} "View profile"]])]))
+        [:a.view-profile {:href (routes/form-url :profile)} "View profile"]
+        [:br]
+        [:a.view-profile {:href (routes/form-url :thread {:thread-id "my-convo-id"})} "Go to thread"]])]))
 
 (defmethod panels :home
   [_]
