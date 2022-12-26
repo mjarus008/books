@@ -68,7 +68,7 @@
 
 (defn get-in [{:keys [path on-success on-failiure]}]
   (let [str-path (path->path-str path)
-        db-ref (database/ref dbase)]
+        db-ref   (database/ref dbase)]
     (-> (database/get
          (database/child db-ref str-path))
         (p/then (fn [snapshot]
