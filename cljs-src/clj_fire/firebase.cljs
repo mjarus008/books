@@ -152,10 +152,6 @@
      (let [thread-ref (database/ref dbase (str "messages/" thread-id))]
        (database/off thread-ref)))))
 
-(comment
-  (let [st (storage/getStorage)
-        reference (storage/ref st "books/book1.pdf")]))
-
 (defn on-auth-state-changed [evt]
   (auth/onAuthStateChanged auth (fn [user] (-> (conj evt user)
                                                (re-frame/dispatch)))))

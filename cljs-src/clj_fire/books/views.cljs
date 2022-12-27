@@ -35,9 +35,6 @@
        [:button {:on-click #(re-frame/dispatch [::books.events/upload-book file])
                  :disabled (nil? file)} "Upload Book"]])))
 
-(comment
-seq  )
-
 (defn books-panel []
   [:section
    [:h1 "Books"]
