@@ -64,3 +64,16 @@
         margin-right: 5px;
     }
 }
+
+// Books
+
+.upload {
+    &__nat-in {
+       display: none;
+    }
+
+    &__upload-cta {
+        padding: 1em;
+
+    }
+}

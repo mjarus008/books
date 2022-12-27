@@ -3,7 +3,8 @@
             [clj-fire.books.events :as books.events]
             [reagent.core :as reagent]
             [re-frame.core :as re-frame]
-            [clj-fire.utils :as utils]))
+            [clj-fire.utils :as utils]
+            react))
 
 (extend-type js/FileList
   ISeqable
@@ -13,18 +14,29 @@
          (seq))))
 
 (defn upload []
-  (reagent/with-let [*file (reagent/atom nil)]
-    [:section
-     [:h2 "Upload books"]
-     [:input {:type "file"
-              :accept ".pdf"
-              :on-change (fn [evt]
-                           (let [files (-> evt .-target .-files)]
-                             (reset! *file (first files))))}]
-     [:br]
-     [:pre (utils/pretty-str @*file)]
-     [:button {:on-click #(re-frame/dispatch [::books.events/upload-book @*file])
-               :disabled (nil? @*file)} "Upload book"]]))
+  (reagent/with-let [*file (reagent/atom nil)
+                     upload-ref (react/createRef)]
+    (let [file @*file]
+      [:section
+       [:h2 "Upload books"]
+       [:input.upload__nat-in {:ref upload-ref
+                               :type "file"
+                               :accept ".pdf"
+                               :on-change (fn [evt]
+                                            (let [files (-> evt .-target .-files)]
+                                              (reset! *file (first files))))}]
+       [:button.upload__upload-cta {:on-click (fn [_evt]
+                                                (-> upload-ref .-current .click))} "Upload books"]
+       [:br]
+       (when (some? file)
+         [:pre (utils/pretty-str
+                {:file-name (.-name file)})])
+       [:br]
+       [:button {:on-click #(re-frame/dispatch [::books.events/upload-book file])
+                 :disabled (nil? file)} "Upload Book"]])))
+
+(comment
+seq  )
 
 (defn books-panel []
   [:section
