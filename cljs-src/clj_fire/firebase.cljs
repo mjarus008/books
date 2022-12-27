@@ -171,9 +171,7 @@
 
 (re-frame/reg-fx
  :fb/upload-file
- (fn [[file-blob {:keys [path on-sucess] :as args}]]
-   (log/trace :file-blob file-blob)
-   (log/trace :args args)
+ (fn [[file-blob {:keys [path on-sucess]}]]
    (let [file-ref (storage/ref storage (path->path-str path))]
      (-> (storage/uploadBytes file-ref file-blob)
          (.then (fn [_snapshot]
