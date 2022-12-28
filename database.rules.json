@@ -16,6 +16,12 @@
           "$message-id":{
             ".write": "newData.child('sender_uid').exists() && newData.child('sender_uid').val() === auth.uid"} 
         }
+      },
+      "books": {
+        "$book-id": {
+          ".read": true,
+          ".write": true
+        }
       }
   }
 }
